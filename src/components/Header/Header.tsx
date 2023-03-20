@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../consts/app-route';
-import Container from '../../styles/Container';
-import { Wrapper, WrapperInner, Logo, Menu, MenuList, MenuItem, MenuItemLink } from './styles';
+import Container from '../../styles-components/Container';
+import { Wrapper, WrapperInner, Logo, Menu, MenuList, MenuItem, MenuItemLink } from './styles-components';
 
 const Header = () => {
     return (

@@ -1,11 +1,17 @@
 import { AppRoute } from '../../consts/app-route';
-import { ButtonElement } from './styles';
+import { ButtonElement, LinkElement } from './styles-components';
 
-const Button = () => {
+type ButtonProps = {
+    text: string;
+    type: 'link' | 'button';
+};
+
+const Button = ({ text, type }: ButtonProps) => {
     return (
-        <ButtonElement to={AppRoute.Characters}>
-            Go to Characters
-        </ButtonElement>
+        <>
+            {type === 'button' && <ButtonElement>{text}</ButtonElement>}
+            {type === 'link' && <LinkElement to={AppRoute.Characters}>{text}</LinkElement>}
+        </>
     );
 };
 

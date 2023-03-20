@@ -20,7 +20,20 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
+        position: relative;
         background: url('images/cosmos.svg'), #0A0A0A;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/noise.png');
+            z-index: -1;
+            pointer-events: none;
+        }
     }
 
     body {

@@ -47,10 +47,18 @@ export const Image = styled.img`
     width: 100%;
 `;
 
+export const Content = styled.div`
+    max-width: 900px;
+`;
+
 export const Text = styled.p`
-    margin: 0;
+    margin: 0 0 30px 0;
     width: 100%;
     text-align: center;
     font-size: 34px;
     line-height: 130%;
+
+    &:last-child {
+        margin: 0;
+    }
 `;

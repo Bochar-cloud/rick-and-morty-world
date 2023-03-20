@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../../styles/Leyout';
+import Layout from '../../styles-components/Leyout';
 import PreviewBanner from './components/PreviewBanner/PreviewBanner';
 
 const MainPage = () => {
