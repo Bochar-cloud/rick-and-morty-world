@@ -1,5 +1,5 @@
 import { AppRoute } from '../../consts/app-route';
-import { ButtonElement, LinkElement } from './styles-components';
+import { ButtonElement, LinkElement } from './styled-components';
 
 type ButtonProps = {
     text: string;

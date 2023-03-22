@@ -6,7 +6,7 @@ export const ButtonElement = styled.button`
     margin: 0 auto;
     padding: 15px 30px;
     border: 2px solid var(--color-link);
-    border-radius: 8px;
+    border-radius: var(--radius);
     width: fit-content;
     font-weight: 700;
     font-size: 40px;
@@ -19,7 +19,7 @@ export const LinkElement = styled(Link)`
     margin: 0 auto;
     padding: 15px 30px;
     border: 2px solid var(--color-link);
-    border-radius: 8px;
+    border-radius: var(--radius);
     width: fit-content;
     font-weight: 700;
     font-size: 40px;

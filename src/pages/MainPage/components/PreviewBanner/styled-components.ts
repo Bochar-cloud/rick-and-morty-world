@@ -27,6 +27,7 @@ export const ImageWrapper = styled.div`
     position: relative;
     margin: 0 auto 40px auto;
     max-width: 500px;
+    z-index: 0;
 
     &::before {
         content: '';

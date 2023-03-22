@@ -1,6 +1,6 @@
 import Button from '../../../../components/Button/Button';
-import Container from '../../../../styles-components/Container';
-import { Wrapper, ImageWrapper, Image, Text, WrapperInner, Content } from './styles-components';
+import Container from '../../../../styled-components/Container';
+import { Wrapper, ImageWrapper, Image, Text, WrapperInner, Content } from './styled-components';
 
 const PreviewBanner = () => {
     return (
