@@ -1,21 +1,26 @@
 import Container from '../../styled-components/Container';
-import { LayoutWrapper, LayoutTitleWrapper, LayoutTitle, LayoutContent } from './styled-components';
+import { LayoutWrapper, LayoutTitleWrapper, LayoutTitle, LayoutContent, LayoutInner } from './styled-components';
 
 type LayoutProps = {
     children: JSX.Element | JSX.Element[];
+    pageTitle?: string;
 };
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, pageTitle }: LayoutProps) => {
     return (
         <LayoutWrapper>
-            <LayoutTitleWrapper>
-                <Container>
-                    <LayoutTitle>Characters</LayoutTitle>
-                </Container>
-            </LayoutTitleWrapper>
-            <LayoutContent>
-                <Container>{children}</Container>
-            </LayoutContent>
+            <LayoutInner>
+                {pageTitle && (
+                    <LayoutTitleWrapper>
+                        <Container>
+                            <LayoutTitle>{pageTitle}</LayoutTitle>
+                        </Container>
+                    </LayoutTitleWrapper>
+                )}
+                <LayoutContent>
+                    <Container>{children}</Container>
+                </LayoutContent>
+            </LayoutInner>
         </LayoutWrapper>
     );
 };
