@@ -3,12 +3,18 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
     :root {
         --color-primary: #67FFFC;
-        --color-primary-second: #BBFD00;
+        --color-primary-second: #BFDE42;
         --color-link: #67FFFC;
         --color-text: #FFFFFF;
+        --color-text-invert: #000000;
         --color-ui: #121212;
         --radius: 10px;
         --transition: .3s ease-in-out;
+        --color-error: #FF4242;
+
+        --color-status-alive: #BFDE42;
+        --color-status-dead: #FF4242;
+        --color-status-unknown: #ffb700;
     }
 
     *,

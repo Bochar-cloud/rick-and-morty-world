@@ -1,4 +1,5 @@
-import { CharacterItem, CharacterImage, CharacterStatus, CharacterSpecies, CharacterContent, CharacterName, CharacterLocation, CharacterInfo } from './styled-components';
+import { Link } from 'react-router-dom';
+import { CharacterItem, CharacterImage, CharacterStatus, CharacterContent, CharacterName, CharacterLocation, CharacterInfo } from './styled-components';
 import type { Character } from '../../../../types/character';
 
 type CharacterProps = {
@@ -8,15 +9,13 @@ type CharacterProps = {
 const CharactersItem = ({ character }: CharacterProps) => {
     return (
         <CharacterItem>
-            <CharacterImage src={character.image}/>
+            <Link to="/"><CharacterImage src={character.image}/></Link>
             <CharacterInfo>
-                <CharacterStatus>{character.status}</CharacterStatus>
-                <CharacterSpecies>{character.species}</CharacterSpecies>
+                <CharacterStatus status={character.status}>{character.status}</CharacterStatus>
             </CharacterInfo>
             <CharacterContent>
-                <CharacterName>{character.name}</CharacterName>
-                <CharacterLocation>{character.location.name}</CharacterLocation>
-                {/* <CharacterEpisode>{character.episode}</CharacterEpisode> */}
+                <CharacterName>Name: <Link to="/">{character.name}</Link></CharacterName>
+                <CharacterLocation>Location: <Link to="/">{character.location.name}</Link></CharacterLocation>
             </CharacterContent>
         </CharacterItem>
     );

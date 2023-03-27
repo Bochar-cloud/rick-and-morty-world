@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { CharacterLiveStatus } from '../../consts/CharacterLiveStatus';
+
+export type CharacterStatusProps = {
+    status: string;
+};
 
 export const CharacterItem = styled.div`
     position: relative;
@@ -20,24 +25,22 @@ export const CharacterInfo = styled.div`
     top: 15px;
 `;
 
-export const CharacterStatus = styled.div`
+export const CharacterStatus = styled.div<CharacterStatusProps>`
     margin: 0 0 10px auto;
     padding: 10px;
     border-radius: var(--radius);
     width: fit-content;
-    background-color: var(--color-ui);
+    background-color: ${({status}) => {
+        if (status === CharacterLiveStatus.Alive) {
+            return 'var(--color-status-alive)';
+        }
 
-    &:last-child {
-        margin: 0;
-    }
-`;
+        if (status === CharacterLiveStatus.Dead) {
+            return 'var(--color-status-dead)';
+        }
 
-export const CharacterSpecies = styled.div`
-    margin: 0 0 10px auto;
-    padding: 10px;
-    border-radius: var(--radius);
-    width: fit-content;
-    background-color: var(--color-ui);
+        return 'var(--color-status-unknown)';
+    }};
 
     &:last-child {
         margin: 0;
@@ -49,7 +52,7 @@ export const CharacterContent = styled.div`
 `;
 
 export const CharacterName = styled.div`
-
+    margin: 0 0 20px 0;
 `;
 
 export const CharacterLocation = styled.div`
