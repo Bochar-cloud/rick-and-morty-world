@@ -10,9 +10,6 @@ type CharactersListProps = {
 };
 
 const CharactersList = ({ characters, pagination }: CharactersListProps) => {
-
-    console.log(pagination);
-    
     return (
         <List>
             {characters.map((character) => (

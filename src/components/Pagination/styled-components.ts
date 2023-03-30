@@ -10,11 +10,12 @@ export const Wrapper = styled.div`
     margin: 50px 0 0 0;
 `;
 
-export const ButtonPrev = styled.div`
-
+export const ButtonPrev = styled(Link)<{$disabled: boolean}>`
+    opacity: ${props => props.$disabled ? '.5' : '1'};
+    pointer-events: ${props => props.$disabled ? 'none' : 'unset'};
 `;
 
-export const ButtonNext = styled.div`
+export const ButtonNext = styled(Link)`
 
 `;
 
@@ -24,6 +25,15 @@ export const PaginationList = styled.div`
     gap: 30px;
 `;
 
-export const PaginationItem = styled.div`
-
+export const PaginationItem = styled(Link)<{$active: boolean}>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid var(--color-link);
+    background-color: ${props => props.$active ? 'var(--color-link)' : 'transparent'};
+    color: ${props => props.$active ? 'var(--color-text-invert)' : 'var(--color-link)'};
+    cursor: pointer;
 `;
