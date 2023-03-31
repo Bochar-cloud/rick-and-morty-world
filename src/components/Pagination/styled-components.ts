@@ -15,14 +15,15 @@ export const ButtonPrev = styled(Link)<{$disabled: boolean}>`
     pointer-events: ${props => props.$disabled ? 'none' : 'unset'};
 `;
 
-export const ButtonNext = styled(Link)`
-
+export const ButtonNext = styled(Link)<{$disabled: boolean}>`
+    opacity: ${props => props.$disabled ? '.5' : '1'};
+    pointer-events: ${props => props.$disabled ? 'none' : 'unset'};
 `;
 
 export const PaginationList = styled.div`
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 15px;
 `;
 
 export const PaginationItem = styled(Link)<{$active: boolean}>`

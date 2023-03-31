@@ -1,48 +1,43 @@
-import { useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { PaginationInfo } from '../../types/pagination-info';
+import { useSearchParams } from 'react-router-dom';
+import { FIRST_PAGE } from '../../consts/pagination';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { usePagination } from '../../hooks/usePagination';
+import { getPagination } from '../../pages/CharactersPage/store/selectors';
 import { Wrapper, ButtonPrev, ButtonNext, PaginationList, PaginationItem } from './styled-components';
 
-type PaginationProps = {
-    pagination: PaginationInfo | null;
-};
+const Pagination = () => {
+    const pagination = useAppSelector(getPagination);
 
-const usePagination = (currentCount: number, lastPage: number): number[] | undefined => {
-    if (currentCount < 0) {
-        return;
-    }
-
-    let count = currentCount ? currentCount : 1;
-
-    const counts = Array.from({length: 5}, (_, idx) => count++);
-
-    counts.push(lastPage);
-
-    return counts;
-};
-
-const Pagination = ({ pagination }: PaginationProps) => {
     const [searchParams] = useSearchParams('');
-    const currentCount = searchParams.get('page');
-    const navigate = useNavigate();
+    const currentCount = Number(searchParams.get('page'));
 
-    useEffect(() => {
-        if (Number(currentCount) <= 0) {
-            navigate('/characters/');
-        }
-    }, [currentCount, navigate]);
+    const counts = usePagination(currentCount, pagination ? pagination.pages : 0);
 
-    const counts = usePagination(Number(currentCount),42);
-    
     return (
         <Wrapper>
-            <ButtonPrev to={`/characters?page=${Number(currentCount) - 1}`} $disabled={!currentCount}>Prev</ButtonPrev>
+            <ButtonPrev
+                to={`/characters?page=${currentCount - 1}`}
+                $disabled={!currentCount || currentCount === FIRST_PAGE}
+            >
+                Prev
+            </ButtonPrev>
             <PaginationList>
                 {counts && counts.map((count) => (
-                    <PaginationItem $active={Number(currentCount) === count || !currentCount} to={`/characters?page=${count}`} key={count}>{count}</PaginationItem>
+                    <PaginationItem
+                        $active={currentCount === count || (currentCount + 1 === count && count === 1)}
+                        to={`/characters?page=${count}`}
+                        key={count}
+                    >
+                        {count}
+                    </PaginationItem>
                 ))}
             </PaginationList>
-            <ButtonNext to={`/characters?page=${Number(currentCount) + 1}`}>Next</ButtonNext>
+            <ButtonNext
+                to={`/characters?page=${!currentCount || currentCount === FIRST_PAGE ? 2 : currentCount + 1}`}
+                $disabled={currentCount === counts[counts.length - 1]}
+            >
+                Next
+            </ButtonNext>
         </Wrapper>
     );
 };
