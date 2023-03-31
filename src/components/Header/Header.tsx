@@ -1,27 +1,33 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../consts/app-route';
+import { menuLinks } from '../../consts/header-links';
 import Container from '../../styled-components/Container';
 import { Wrapper, WrapperInner, Logo, Menu, MenuList, MenuItem, MenuItemLink } from './styled-components';
 
 const Header = () => {
+    const [activeLink, setActiveLink] = useState(AppRoute.Home);
+
     return (
         <Wrapper>
             <Container>
                 <WrapperInner>
-                    <Link to={AppRoute.Main}>
+                    <Link to={AppRoute.Home}>
                         <Logo src="images/Rick-and-Morty-logo.svg" />
                     </Link>
                     <Menu>
                         <MenuList>
-                            <MenuItem>
-                                <MenuItemLink to={AppRoute.Characters}>Characters</MenuItemLink>
-                            </MenuItem>
-                            <MenuItem>
-                                <MenuItemLink to={AppRoute.Locations}>Locations</MenuItemLink>
-                            </MenuItem>
-                            <MenuItem>
-                                <MenuItemLink to={AppRoute.Episodes}>Episodes</MenuItemLink>
-                            </MenuItem>
+                            {menuLinks.map((link) => (
+                                <MenuItem key={link.id}>
+                                    <MenuItemLink
+                                        to={link.url}
+                                        $isActive={activeLink === link.url}
+                                        onClick={() => setActiveLink(link.url)}
+                                    >
+                                        {link.name}
+                                    </MenuItemLink>
+                                </MenuItem>
+                            ))}
                         </MenuList>
                     </Menu>
                 </WrapperInner>

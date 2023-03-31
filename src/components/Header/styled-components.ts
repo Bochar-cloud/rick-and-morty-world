@@ -28,6 +28,8 @@ export const MenuList = styled.ul`
 
 export const MenuItem = styled.li``;
 
-export const MenuItemLink = styled(Link)`
+export const MenuItemLink = styled(Link)<{$isActive: boolean}>`
     font-size: 30px;
+    border-bottom: ${props => props.$isActive ? '2px solid var(--color-link)' : '2px solid transparent'};
+    transition: var(--transition);
 `;

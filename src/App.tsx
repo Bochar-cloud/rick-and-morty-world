@@ -13,7 +13,7 @@ const App = () => {
 
             <Routes>
                 <Route
-                    path={AppRoute.Main}
+                    path={AppRoute.Home}
                     element={<MainPage />}
                 />
                 <Route
