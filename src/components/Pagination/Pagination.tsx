@@ -8,7 +8,7 @@ import { Wrapper, ButtonPrev, ButtonNext, PaginationList, PaginationItem } from 
 const Pagination = () => {
     const pagination = useAppSelector(getPagination);
 
-    const [searchParams] = useSearchParams('');
+    const [searchParams] = useSearchParams();
     const currentCount = Number(searchParams.get('page'));
 
     const counts = usePagination(currentCount, pagination ? pagination.pages : 0);

@@ -2,11 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 import { CharacterPage } from '../../../types/character-page';
 
-export const fetchCharacters = createAsyncThunk<CharacterPage, string>(
+export const fetchCharacters = createAsyncThunk<CharacterPage, string | undefined>(
     'characters/fatchAll',
-    async (count, { rejectWithValue }) => {
+    async (params, { rejectWithValue }) => {
         try {
-            const response = await axios.get<CharacterPage>(`https://rickandmortyapi.com/api/character${count ? `?page=${count}` : ''}`);
+            // console.log(params);
+            
+            const response = await axios.get<CharacterPage>(`https://rickandmortyapi.com/api/character${params ? `${params}` : ''}`);
 
             return response.data;
         } catch (err) {

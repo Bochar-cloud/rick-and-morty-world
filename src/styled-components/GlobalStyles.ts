@@ -2,12 +2,17 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
     :root {
-        --color-primary: #67FFFC;
+        --color-primary: #BAD44E;
+        --color-text: #FFFFFF;
+        --color-ui: #1e1e1e;
+        --color-bg: #0A0A0A;
+
+
+
+
         --color-primary-second: #BFDE42;
         --color-link: #67FFFC;
-        --color-text: #FFFFFF;
         --color-text-invert: #000000;
-        --color-ui: #121212;
         --radius: 10px;
         --transition: .3s ease-in-out;
         --color-error: #FF4242;
@@ -31,15 +36,17 @@ const GlobalStyles = createGlobalStyle`
 
     html {
         position: relative;
-        background: url('images/cosmos.svg'), #0A0A0A;
+        background-color: var(--color-bg);
+        /* background: url('images/cosmos.svg'), var(--color-bg); */
     }
 
     body {
         margin: 0;
-        font-family: 'Kanda';
-        font-size: 24px;
-        line-height: 110%;
-        font-weight: 400;
+        padding: 100px 0 0 0;
+        font-family: 'Rubik';
+        font-size: 18px;
+        line-height: 150%;
+        font-weight: 300;
         letter-spacing: 0.10em;
         color: #fff;
     }
@@ -59,8 +66,14 @@ const GlobalStyles = createGlobalStyle`
     }
 
     a {
-        color: var(--color-link);
+        color: var(--color-primary);
         text-decoration: none;
+        opacity: .7;
+        transition: var(--transition);
+
+        &:hover {
+            opacity: 1;
+        }
     }
 `;
 

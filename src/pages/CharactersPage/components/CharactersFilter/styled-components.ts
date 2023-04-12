@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 
 export const Filter = styled.div`
-    position: sticky;
+    /* position: sticky;
     top: 50px;
-    height: fit-content;
-    max-width: 300px;
+    height: fit-content; */
+    /* max-width: 300px; */
 `;
 
 export const FilterInner = styled.div`
@@ -23,6 +23,7 @@ export const FilterTitle = styled.h2`
 `;
 
 export const FilterList = styled.ul`
+    display: flex;
     margin: 0;
     padding: 0;
     list-style-type: none;

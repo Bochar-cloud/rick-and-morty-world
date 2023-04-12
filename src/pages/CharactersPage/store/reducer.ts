@@ -21,7 +21,11 @@ const initialState: CharacterSlice = {
 export const characterSlice = createSlice({
     name: 'character',
     initialState,
-    reducers: {},
+    reducers: {
+        addCharacters: (state, action: PayloadAction<CharacterPage>) => {
+            state.characters.push(...action.payload.results);
+        }
+    },
     extraReducers: {
         [fetchCharacters.pending.type] : (state) => {
             state.isLoading = true;
@@ -29,7 +33,7 @@ export const characterSlice = createSlice({
         [fetchCharacters.fulfilled.type] : (state, action: PayloadAction<CharacterPage>) => {
             state.isLoading = false;
             state.error = '';
-            state.characters = action.payload.results;
+            state.characters.push(...action.payload.results);
             state.pagination = action.payload.info;
         },
         [fetchCharacters.rejected.type] : (state, action: PayloadAction<string>) => {
@@ -40,3 +44,4 @@ export const characterSlice = createSlice({
 });
 
 export default characterSlice.reducer;
+export const { addCharacters } = characterSlice.actions;

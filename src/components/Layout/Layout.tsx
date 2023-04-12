@@ -1,27 +1,31 @@
 import Container from '../../styled-components/Container';
-import { LayoutWrapper, LayoutTitleWrapper, LayoutTitle, LayoutContent, LayoutInner } from './styled-components';
+import { Page, PageTop, PageTitle, PageText, PageContent } from './styled-components';
 
 type LayoutProps = {
     children: JSX.Element | JSX.Element[];
     pageTitle?: string;
+    pageText?: string;
 };
 
-const Layout = ({ children, pageTitle }: LayoutProps) => {
+const Layout = ({ children, pageTitle, pageText }: LayoutProps) => {
     return (
-        <LayoutWrapper>
-            <LayoutInner>
-                {pageTitle && (
-                    <LayoutTitleWrapper>
-                        <Container>
-                            <LayoutTitle>{pageTitle}</LayoutTitle>
-                        </Container>
-                    </LayoutTitleWrapper>
-                )}
-                <LayoutContent>
-                    <Container>{children}</Container>
-                </LayoutContent>
-            </LayoutInner>
-        </LayoutWrapper>
+        <Page
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+        >
+            {pageTitle &&
+                <PageTop>
+                    <Container>
+                        <PageTitle>{pageTitle}</PageTitle>
+                        <PageText>{pageText}</PageText>
+                    </Container>
+                </PageTop>
+            }
+            <PageContent>
+                <Container>{children}</Container>
+            </PageContent>
+        </Page>
     );
 };
 

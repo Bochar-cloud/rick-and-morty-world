@@ -1,35 +1,101 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-export const Wrapper = styled.header`
-    padding: 15px 0;
+export const HeaderEl = styled.header`
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    padding: 20px 0 20px 0;
     background-color: var(--color-ui);
+    z-index: 10;
 `;
 
-export const WrapperInner = styled.div`
+export const Wrapper = styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
 `;
 
-export const Logo = styled.img`
-    width: 230px;
+export const Logo = styled(Link)`
+
 `;
 
-export const Menu = styled.nav``;
+export const LogoImage = styled.img`
+    width: 200px;
+`;
+
+export const Menu = styled(motion.nav)`
+    position: absolute;
+    right: 0;
+    top: calc(100% + 30px);
+    padding: 20px;
+    background-color: var(--color-ui);
+`;
 
 export const MenuList = styled.ul`
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 0;
     list-style-type: none;
 `;
 
-export const MenuItem = styled.li``;
+export const MenuItem = styled.li`
 
-export const MenuItemLink = styled(Link)<{$isActive: boolean}>`
-    font-size: 30px;
-    border-bottom: ${props => props.$isActive ? '2px solid var(--color-link)' : '2px solid transparent'};
-    transition: var(--transition);
 `;
+
+export const MenuLink = styled(Link)<{$isActive: boolean}>`
+    color: ${props => props.$isActive ? 'var(--color-primary)' : 'var(--color-text)'};
+
+    &:hover {
+        color: var(--color-primary);
+        transition: var(--transition);
+    }
+`;
+
+export const Burger = styled.button.attrs({
+    type: 'button'
+})<{isActive: boolean}>`
+    position: relative;
+    border: none;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    background-color: ${props => props.isActive ? 'var(--color-primary)' : '#0A0A0A'};
+    transition: var(--transition);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-primary);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: ${props => props.isActive ? '50%' : '14px'};
+        width: 30px;
+        height: 6px;
+        background-color: var(--color-text);
+        transform: ${props => props.isActive ? 'translate(-50%, -50%) rotate(45deg)' : 'translate(-50%, 0)'};
+        transition: var(--transition);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: ${props => props.isActive ? 'auto' : '14px'};
+        width: 30px;
+        height: 6px;
+        background-color: var(--color-text);
+        transform: ${props => props.isActive ? 'translate(-50%, -50%) rotate(-45deg)' : 'translate(-50%, 0)'};
+        transition: var(--transition);
+    }
+`;
+

@@ -1,24 +1,26 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const LayoutWrapper = styled.main`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-    background-image: url('images/noise.png');
+export const Page = styled(motion.main)``;
+
+export const PageTop = styled.div`
+    margin: 0 0 50px 0;
+    padding: 50px 0;
+    background-color: var(--color-primary);
 `;
 
-export const LayoutTitleWrapper = styled.div`
-    margin: 0 0 100px 0;
-`;
-
-export const LayoutTitle = styled.h1`
+export const PageTitle = styled.h1`
     margin: 0;
-    text-align: center;
-    font-size: 80px;
-    line-height: 110%;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 150%;
 `;
 
-export const LayoutInner = styled.div``;
+export const PageText = styled.p`
+    font-size: 20px;
+    font-weight: 400;
+`;
 
-export const LayoutContent = styled.div``;
+export const PageContent = styled.div`
+
+`;

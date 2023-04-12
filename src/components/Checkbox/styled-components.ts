@@ -8,7 +8,7 @@ export const Label = styled.label`
 `;
 
 export const CheckboxInput = styled.input.attrs({
-    type: 'checkbox'
+    type: 'radio'
 })`
     position: absolute;
     width: 1px;
@@ -29,7 +29,7 @@ export const CheckboxInput = styled.input.attrs({
 export const CheckboxBlock = styled.div`
     position: relative;
     border: 2px solid var(--color-primary);
-    border-radius: 4px;
+    border-radius: 50%;
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -39,7 +39,7 @@ export const CheckboxBlock = styled.div`
         position: absolute;
         left: 50%;
         top: 50%;
-        border-radius: 2px;
+        border-radius: 50%;
         width: 50%;
         height: 50%;
         opacity: 0;
