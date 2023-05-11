@@ -1,6 +1,6 @@
-import { CharacterLocation } from './characterLocation';
+import { CharacterLocation } from './CharacterLocation';
 import { CharacterGender } from './CharacterGender';
-import { CharacterStatus } from './characterStatus';
+import { CharacterStatus } from './CharacterStatus';
 
 export interface Character {
     id: number,
