@@ -1,56 +1,54 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { AppRoute } from '../../consts/app-route';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { menuLinks } from '../../consts/header-links';
-import Container from '../../styled-components/Container';
-import { useCurrentPage } from '../../hooks/useCurrentPage';
-import { HeaderEl, Logo, LogoImage, Menu, MenuList, MenuItem, MenuLink, Wrapper, Burger } from './styled-components';
+import { Container } from '../../styles/components';
+import * as C from './components';
 
 const Header = () => {
+    const { pathname } = useLocation();
     const [isActiveMenu, setIsActiveMenu] = useState<boolean>(false);
-    const [isActiveLink, setIsActiveLink] = useState<string>('');
-
-    const currentPage = useCurrentPage();
+    const [isActiveLink, setIsActiveLink] = useState<string | null>(pathname);
 
     useEffect(() => {
-        setIsActiveLink(currentPage);
-    }, [currentPage]);
+        setIsActiveLink(pathname);
+        setIsActiveMenu(false);
+    }, [pathname]);
 
     const burgerCLickHandler = () => {
         setIsActiveMenu((prev) => !prev);
     };
 
     return (
-        <HeaderEl>
+        <C.HeaderEl>
             <Container>
-                <Wrapper>
-                    <Logo to="/">
-                        <LogoImage src="images/Rick-and-Morty-logo.svg" />
-                    </Logo>
+                <C.Wrapper>
+                    <C.Logo to="/">
+                        <C.LogoImage src="images/Rick-and-Morty-logo.svg" />
+                    </C.Logo>
 
-                    <Burger isActive={isActiveMenu} onClick={burgerCLickHandler} />
+                    <C.Burger isActive={isActiveMenu} onClick={burgerCLickHandler} />
 
                     {isActiveMenu &&
                         <AnimatePresence>
-                            <Menu
+                            <C.Menu
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                             >
-                                <MenuList>
+                                <C.MenuList>
                                     {menuLinks.map((link) => (
-                                        <MenuItem key={link.id}>
-                                            <MenuLink to={link.url} $isActive={isActiveLink === link.url}>{link.name}</MenuLink>
-                                        </MenuItem>
+                                        <C.MenuItem key={link.id}>
+                                            <C.MenuLink to={link.url} $isActive={isActiveLink === link.url}>{link.name}</C.MenuLink>
+                                        </C.MenuItem>
                                     ))}
-                                </MenuList>
-                            </Menu>
+                                </C.MenuList>
+                            </C.Menu>
                         </AnimatePresence>
                     }
-                </Wrapper>
+                </C.Wrapper>
             </Container>
-        </HeaderEl>
+        </C.HeaderEl>
     );
 };
 

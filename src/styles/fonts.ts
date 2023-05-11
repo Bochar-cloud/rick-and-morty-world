@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const FontStyles = createGlobalStyle`
+const Fonts = createGlobalStyle`
     @font-face {
     font-family: 'Rubik';
     src: url('fonts/Rubik-SemiBold.woff2') format('woff2'),
@@ -111,9 +111,6 @@ const FontStyles = createGlobalStyle`
         url('fonts/Rubik-MediumItalic.woff') format('woff');
     font-weight: 500;
     font-style: italic;
-}
+}`;
 
-
-`;
-
-export default FontStyles;
+export default Fonts;

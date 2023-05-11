@@ -1,24 +1,21 @@
 import { Link } from 'react-router-dom';
-import { CharacterItem, CharacterImageLink, CharacterImage, CharacterStatus, CharacterContent, CharacterName, CharacterLocation, CharacterInfo } from './styled-components';
-import type { Character } from '../../../../types/character';
+import { Character } from '../../../../types/Character';
+import * as C from './components';
 
 type CharacterProps = {
     character: Character;
-    refElement?: React.RefObject<HTMLDivElement>;
 };
 
-const CharactersItem = ({ character, refElement }: CharacterProps) => {
+const CharactersItem = ({ character }: CharacterProps) => {
     return (
-        <CharacterItem ref={refElement} status={character.status}>
-            <CharacterImageLink to="/"><CharacterImage src={character.image}/></CharacterImageLink>
-            <CharacterInfo>
-                <CharacterStatus status={character.status}>{character.status}</CharacterStatus>
-            </CharacterInfo>
-            <CharacterContent>
-                <CharacterName>Name: <Link to="/">{character.name}</Link></CharacterName>
-                <CharacterLocation>Location: <Link to="/">{character.location.name}</Link></CharacterLocation>
-            </CharacterContent>
-        </CharacterItem>
+        <C.CharacterItem status={character.status}>
+            <C.CharacterImageLink to="/"><C.CharacterImage src={character.image}/></C.CharacterImageLink>
+            <C.CharacterStatus status={character.status}>{character.status}</C.CharacterStatus>
+            <C.CharacterContent>
+                <C.CharacterContentItem>Name: <Link to="/">{character.name}</Link></C.CharacterContentItem>
+                <C.CharacterContentItem>Location: <Link to="/">{character.location.name}</Link></C.CharacterContentItem>
+            </C.CharacterContent>
+        </C.CharacterItem>
     );
 };
 

@@ -7,9 +7,6 @@ const GlobalStyles = createGlobalStyle`
         --color-ui: #1e1e1e;
         --color-bg: #0A0A0A;
 
-
-
-
         --color-primary-second: #BFDE42;
         --color-link: #67FFFC;
         --color-text-invert: #000000;

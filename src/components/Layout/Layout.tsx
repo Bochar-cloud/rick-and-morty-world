@@ -1,5 +1,5 @@
-import Container from '../../styled-components/Container';
-import { Page, PageTop, PageTitle, PageText, PageContent } from './styled-components';
+import { Container } from '../../styles/components';
+import * as C from './components';
 
 type LayoutProps = {
     children: JSX.Element | JSX.Element[];
@@ -9,23 +9,21 @@ type LayoutProps = {
 
 const Layout = ({ children, pageTitle, pageText }: LayoutProps) => {
     return (
-        <Page
+        <C.Page
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
         >
             {pageTitle &&
-                <PageTop>
+                <C.PageTop>
                     <Container>
-                        <PageTitle>{pageTitle}</PageTitle>
-                        <PageText>{pageText}</PageText>
+                        <C.PageTitle>{pageTitle}</C.PageTitle>
+                        <C.PageText>{pageText}</C.PageText>
                     </Container>
-                </PageTop>
+                </C.PageTop>
             }
-            <PageContent>
-                <Container>{children}</Container>
-            </PageContent>
-        </Page>
+            <Container>{children}</Container>
+        </C.Page>
     );
 };
 

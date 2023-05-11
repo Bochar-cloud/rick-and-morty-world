@@ -1,20 +1,21 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
-import FontStyles from './styled-components/FontStyle';
-import GlobalStyles from './styled-components/GlobalStyles';
+import Fonts from './styles/fonts';
+import GlobalStyles from './styles/global';
 import { store } from './store/store';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
+    <StrictMode>
         <Provider store={store}>
             <BrowserRouter>
-                <FontStyles />
-                <GlobalStyles />
                 <App />
+
+                <Fonts />
+                <GlobalStyles />
             </BrowserRouter>
         </Provider>
-    </React.StrictMode>
+    </StrictMode>
 );

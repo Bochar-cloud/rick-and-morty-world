@@ -1,20 +1,18 @@
-export type Character = {
+import { CharacterLocation } from './characterLocation';
+import { CharacterGender } from './CharacterGender';
+import { CharacterStatus } from './characterStatus';
+
+export interface Character {
     id: number,
-    name: string,
-    status: string,
-    species: string,
-    type: string,
-    gender: string,
-    origin: {
-        name: string,
-        url: string,
-    }
-    location: {
-        name: string,
-        url: string,
-    },
-    image: string,
+    created: string,
     episode: string[],
+    gender: CharacterGender,
+    image: string,
+    location: CharacterLocation,
+    name: string,
+    origin: CharacterLocation,
+    species: string,
+    status: CharacterStatus,
+    type: string,
     url: string,
-    created: string
 };
