@@ -5,6 +5,7 @@ import MainPage from './pages/MainPage/MainPage';
 import CharactersPage from './pages/CharactersPage/CharactersPage';
 import LocationsPage from './pages/LocationsPage/LocationsPage';
 import EpisodesPage from './pages/EpisodesPage/EpisodesPage';
+import CharacterPage from './pages/CharacterPage/CharacterPage';
 
 const App = () => {
     return (
@@ -19,6 +20,10 @@ const App = () => {
                 <Route
                     path={AppRoute.Characters}
                     element={<CharactersPage />}
+                />
+                <Route
+                    path={AppRoute.Character}
+                    element={<CharacterPage />}
                 />
                 <Route
                     path={AppRoute.Locations}

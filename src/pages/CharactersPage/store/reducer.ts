@@ -9,6 +9,7 @@ export type CharacterSlice = {
     pageInfo: Info | null;
     isLoading: boolean,
     error: string,
+    currentPage: number
 };
 
 const initialState: CharacterSlice = {
@@ -16,12 +17,20 @@ const initialState: CharacterSlice = {
     pageInfo: null,
     isLoading: false,
     error: '',
+    currentPage: 1,
 };
 
-export const characterSlice = createSlice({
-    name: 'character',
+export const charactersSlice = createSlice({
+    name: 'characters',
     initialState,
     reducers: {
+        setCurrentPage: (state, action: PayloadAction<number>) => {
+            if (action.payload === state.currentPage) {
+                return;
+            }
+
+            state.currentPage = action.payload;
+        }
     },
     extraReducers: {
         [fetchCharacters.pending.type] : (state) => {
@@ -40,5 +49,5 @@ export const characterSlice = createSlice({
     }
 });
 
-export default characterSlice.reducer;
-// export const { addCharacters } = characterSlice.actions;
+export default charactersSlice.reducer;
+export const { setCurrentPage } = charactersSlice.actions;

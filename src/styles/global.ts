@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -62,7 +64,7 @@ const GlobalStyles = createGlobalStyle`
         display: block;
     }
 
-    a {
+    a, button {
         color: var(--color-primary);
         text-decoration: none;
         opacity: .7;

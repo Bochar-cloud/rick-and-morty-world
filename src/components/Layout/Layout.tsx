@@ -22,7 +22,9 @@ const Layout = ({ children, pageTitle, pageText }: LayoutProps) => {
                     </Container>
                 </C.PageTop>
             }
-            <Container>{children}</Container>
+            <Container>
+                <C.PageContent>{children}</C.PageContent>
+            </Container>
         </C.Page>
     );
 };

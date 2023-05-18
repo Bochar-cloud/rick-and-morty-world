@@ -24,7 +24,7 @@ const Header = () => {
             <Container>
                 <C.Wrapper>
                     <C.Logo to="/">
-                        <C.LogoImage src="images/Rick-and-Morty-logo.svg" />
+                        <C.LogoImage src="/images/Rick-and-Morty-logo.svg" />
                     </C.Logo>
 
                     <C.Burger isActive={isActiveMenu} onClick={burgerCLickHandler} />

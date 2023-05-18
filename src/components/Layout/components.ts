@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { baseTheme } from '../../styles/theme';
 
 export const Page = styled(motion.main)``;
 
 export const PageTop = styled.div`
-    margin: 0 0 50px 0;
     padding: 50px 0;
-    background-color: var(--color-primary);
+    background-color: ${baseTheme.colors.primary};
 `;
 
 export const PageTitle = styled.h1`
@@ -19,4 +19,8 @@ export const PageTitle = styled.h1`
 export const PageText = styled.p`
     font-size: 20px;
     font-weight: 400;
+`;
+
+export const PageContent = styled.div`
+    padding: 50px 0;
 `;

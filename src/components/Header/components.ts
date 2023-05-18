@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { baseTheme } from '../../styles/theme';
 
 export const HeaderEl = styled.header`
     position: fixed;
@@ -50,10 +51,10 @@ export const MenuItem = styled.li`
 `;
 
 export const MenuLink = styled(Link)<{$isActive: boolean}>`
-    color: ${props => props.$isActive ? 'var(--color-primary)' : 'var(--color-text)'};
+    color: ${props => props.$isActive ? baseTheme.colors.primary : baseTheme.colors.text};
 
     &:hover {
-        color: var(--color-primary);
+        color: ${baseTheme.colors.primary};
         transition: var(--transition);
     }
 `;
@@ -66,12 +67,12 @@ export const Burger = styled.button.attrs({
     padding: 0;
     width: 48px;
     height: 48px;
-    background-color: ${props => props.isActive ? 'var(--color-primary)' : '#0A0A0A'};
-    transition: var(--transition);
+    background-color: ${props => props.isActive ? baseTheme.colors.primary : '#0A0A0A'};
+    transition: ${baseTheme.transitions.easeInOut};
     cursor: pointer;
 
     &:hover {
-        background-color: var(--color-primary);
+        background-color: ${baseTheme.colors.primary};
     }
 
     &::before {

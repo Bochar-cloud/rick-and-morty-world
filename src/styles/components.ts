@@ -7,3 +7,8 @@ export const Container = styled.div`
     width: 100%;
     max-width: ${baseTheme.sizes.container}px;
 `;
+
+export const TitleH2 = styled.h2`
+    margin: 0 0 50px 0;
+    font-size: 40px;
+`;

@@ -1,7 +1,7 @@
 export const baseTheme = {
     colors: {
         primary: '#BAD44E',
-        secondary: '',
+        secondary: '#A9D3E9',
         text: '#FFFFFF',
         elements: '#1e1e1e',
         background: '#0A0A0A',
@@ -26,8 +26,8 @@ export const baseTheme = {
     },
 
     // in ms
-    durations: {
-        ms300: 300,
+    transitions: {
+        easeInOut: '.3s ease-in-out',
     },
 
     // z-index

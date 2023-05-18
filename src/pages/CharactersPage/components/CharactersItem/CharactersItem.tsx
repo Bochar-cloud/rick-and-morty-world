@@ -9,7 +9,7 @@ type CharacterProps = {
 const CharactersItem = ({ character }: CharacterProps) => {
     return (
         <C.CharacterItem status={character.status}>
-            <C.CharacterImageLink to="/"><C.CharacterImage src={character.image}/></C.CharacterImageLink>
+            <C.CharacterImageLink to={`/characters/${character.id}`}><C.CharacterImage src={character.image}/></C.CharacterImageLink>
             <C.CharacterStatus status={character.status}>{character.status}</C.CharacterStatus>
             <C.CharacterContent>
                 <C.CharacterContentItem>Name: <Link to="/">{character.name}</Link></C.CharacterContentItem>
