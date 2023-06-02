@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Character } from '../../../types/Character';
 import { Episode } from '../../../types/Episode';
-import { fetchCharacter, fetchEpisodes } from './api-actions';
+import { getIdentifiersFromPaths } from '../../../helpers/getIdentifiersFromPaths';
+import { fetchCharacter, fetchCharacterEpisodes } from './api-actions';
 
 export type CharacterSlice = {
     character: Character | null,
     isLoading: boolean,
     error: string,
-    episodes: Episode[]
+    episodes: Episode[],
+    episodesIds: string[],
 };
 
 const initialState: CharacterSlice = {
@@ -15,6 +17,7 @@ const initialState: CharacterSlice = {
     isLoading: false,
     error: '',
     episodes: [],
+    episodesIds: [],
 };
 
 export const characterSlice = createSlice({
@@ -28,6 +31,7 @@ export const characterSlice = createSlice({
         },
         [fetchCharacter.fulfilled.type] : (state, action: PayloadAction<Character>) => {
             state.character = action.payload;
+            state.episodesIds = getIdentifiersFromPaths(state.character.episode);
             state.isLoading = false;
             state.error = '';
         },
@@ -35,15 +39,22 @@ export const characterSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
-        [fetchEpisodes.pending.type] : (state) => {
+        [fetchCharacterEpisodes.pending.type] : (state) => {
             state.isLoading = true;
         },
-        [fetchEpisodes.fulfilled.type] : (state, action: PayloadAction<Episode[]>) => {
+        [fetchCharacterEpisodes.fulfilled.type] : (state, action: PayloadAction<Episode[] | Episode>) => {
+            if (!Array.isArray(action.payload)) {
+                state.episodes = [action.payload];
+                state.isLoading = false;
+                state.error = '';
+                return;
+            }
+
             state.episodes = action.payload;
             state.isLoading = false;
             state.error = '';
         },
-        [fetchEpisodes.rejected.type] : (state, action: PayloadAction<string>) => {
+        [fetchCharacterEpisodes.rejected.type] : (state, action: PayloadAction<string>) => {
             state.isLoading = false;
             state.error = action.payload;
         },

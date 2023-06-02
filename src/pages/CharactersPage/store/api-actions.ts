@@ -4,7 +4,7 @@ import { Response } from '../../../types/Response';
 import { Character } from '../../../types/Character';
 
 export const fetchCharacters = createAsyncThunk<Response<Character[]>, string | undefined>(
-    'characters/fatchAll',
+    'characters/fetchAll',
     async (params, { rejectWithValue }) => {
         try {
             const response = await axios.get<Response<Character[]>>(`https://rickandmortyapi.com/api/character?${params ? `${params}` : ''}`);

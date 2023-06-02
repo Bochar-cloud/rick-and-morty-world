@@ -9,9 +9,9 @@ const buttonReset = css`
     cursor: pointer;
 `;
 
-export const EpisodesList = styled.div`
+const destroy = css`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 50px;
 `;
 
@@ -19,9 +19,12 @@ export const SliderWrapper = styled.div`
     position: relative;
 `;
 
-export const SliderInner = styled.div`
+export const SliderInner = styled.div<{isDestroy: boolean}>`
     width: 100vw;
     overflow: hidden;
+    & .swiper-wrapper {
+        ${(props) => props.isDestroy ? destroy : ''}
+    }
 `;
 
 export const Slider = styled(Swiper)`

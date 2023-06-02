@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { baseTheme } from './theme';
+import { adpaptiveFont } from './mixins';
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -48,6 +50,7 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 300;
         letter-spacing: 0.10em;
         color: #fff;
+        ${adpaptiveFont(baseTheme.fonts.p.desctop, baseTheme.fonts.p.phone)}
     }
 
     #root {
@@ -74,6 +77,45 @@ const GlobalStyles = createGlobalStyle`
             opacity: 1;
         }
     }
+
+    h1 {
+        ${adpaptiveFont(baseTheme.fonts.h1.desctop, baseTheme.fonts.h1.phone)}
+        font-weight: 700;
+        line-height: 150%;
+    }
+
+    h2 {
+        ${adpaptiveFont(baseTheme.fonts.h2.desctop, baseTheme.fonts.h2.phone)}
+        font-weight: 700;
+        line-height: 150%;
+    }
+
+    h3 {
+        ${adpaptiveFont(baseTheme.fonts.h3.desctop, baseTheme.fonts.h3.phone)}
+        font-weight: 700;
+        line-height: 150%;
+    }
+
+    h4 {
+        ${adpaptiveFont(baseTheme.fonts.h4.desctop, baseTheme.fonts.h4.phone)}
+        font-weight: 700;
+        line-height: 150%;
+    }
+
+    p {
+        margin: 0 0 20px 0;
+        ${adpaptiveFont(baseTheme.fonts.p.desctop, baseTheme.fonts.p.phone)}
+        font-weight: 400;
+        line-height: 130%;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
 `;
+
+
+
+
 
 export default GlobalStyles;

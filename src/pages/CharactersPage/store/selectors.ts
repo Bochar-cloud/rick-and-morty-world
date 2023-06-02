@@ -5,6 +5,7 @@ export const getCharacters = (state: RootState) => state.charactersSlice.charact
 export const getPageInfo = (state: RootState) => state.charactersSlice.pageInfo;
 export const getLoadingStatus = (state: RootState) => state.charactersSlice.isLoading;
 export const getError = (state: RootState) => state.charactersSlice.error;
+export const getPageCount = (state: RootState) => state.charactersSlice.pageCount;
 
 export const charactersSelector = createSelector(
     [getCharacters, getPageInfo, getLoadingStatus, getError],

@@ -1,54 +1,35 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import { menuLinks } from '../../consts/header-links';
+import { useRef } from 'react';
 import { Container } from '../../styles/components';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import * as C from './components';
+import HeaderLinks from './HeaderLinks';
+
+const options:IntersectionObserverInit = {
+    root: null,
+    rootMargin: '-100px 0px 0px 0px',
+    threshold: 0
+};
 
 const Header = () => {
-    const { pathname } = useLocation();
-    const [isActiveMenu, setIsActiveMenu] = useState<boolean>(false);
-    const [isActiveLink, setIsActiveLink] = useState<string | null>(pathname);
+    const ref = useRef(null);
 
-    useEffect(() => {
-        setIsActiveLink(pathname);
-        setIsActiveMenu(false);
-    }, [pathname]);
-
-    const burgerCLickHandler = () => {
-        setIsActiveMenu((prev) => !prev);
-    };
+    const isIntersecting = useIntersectionObserver(ref, false, options);
 
     return (
-        <C.HeaderEl>
-            <Container>
-                <C.Wrapper>
-                    <C.Logo to="/">
-                        <C.LogoImage src="/images/Rick-and-Morty-logo.svg" />
-                    </C.Logo>
+        <>
+            <div ref={ref} />
+            <C.Header isSticky={isIntersecting}>
+                <Container>
+                    <C.Wrapper>
+                        <C.Logo to="/">
+                            <C.LogoImage src="/images/Rick-and-Morty-logo.svg" />
+                        </C.Logo>
 
-                    <C.Burger isActive={isActiveMenu} onClick={burgerCLickHandler} />
-
-                    {isActiveMenu &&
-                        <AnimatePresence>
-                            <C.Menu
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                            >
-                                <C.MenuList>
-                                    {menuLinks.map((link) => (
-                                        <C.MenuItem key={link.id}>
-                                            <C.MenuLink to={link.url} $isActive={isActiveLink === link.url}>{link.name}</C.MenuLink>
-                                        </C.MenuItem>
-                                    ))}
-                                </C.MenuList>
-                            </C.Menu>
-                        </AnimatePresence>
-                    }
-                </C.Wrapper>
-            </Container>
-        </C.HeaderEl>
+                        <HeaderLinks />
+                    </C.Wrapper>
+                </Container>
+            </C.Header>
+        </>
     );
 };
 

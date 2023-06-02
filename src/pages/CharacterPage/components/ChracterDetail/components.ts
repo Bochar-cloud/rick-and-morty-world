@@ -6,6 +6,7 @@ export const Detail = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 50px;
     margin: 0 0 50px 0;
+    place-items: center;
 
     &:last-child {
         margin: 0;
@@ -20,11 +21,11 @@ export const DetailList = styled.ul`
     margin: 0;
     padding: 0;
     list-style-type: none;
-    font-size: 20px;
+    font-size: 24px;
 `;
 
 export const DetailListItem = styled.li`
-    margin: 0 0 20px 0;
+    margin: 0 0 50px 0;
 
     &:last-child {
         margin: 0;

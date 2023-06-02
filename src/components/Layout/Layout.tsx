@@ -17,8 +17,8 @@ const Layout = ({ children, pageTitle, pageText }: LayoutProps) => {
             {pageTitle &&
                 <C.PageTop>
                     <Container>
-                        <C.PageTitle>{pageTitle}</C.PageTitle>
-                        <C.PageText>{pageText}</C.PageText>
+                        {pageTitle && <C.PageTitle>{pageTitle}</C.PageTitle>}
+                        {pageText && <C.PageText>{pageText}</C.PageText>}
                     </Container>
                 </C.PageTop>
             }

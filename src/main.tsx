@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+// import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -8,14 +8,14 @@ import GlobalStyles from './styles/global';
 import { store } from './store/store';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <StrictMode>
-        <Provider store={store}>
-            <BrowserRouter>
-                <App />
+    // <StrictMode>
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
 
-                <Fonts />
-                <GlobalStyles />
-            </BrowserRouter>
-        </Provider>
-    </StrictMode>
+            <Fonts />
+            <GlobalStyles />
+        </BrowserRouter>
+    </Provider>
+    // </StrictMode>
 );

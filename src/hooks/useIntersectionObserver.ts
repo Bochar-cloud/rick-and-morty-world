@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export const useIntersectionObserver = (ref: React.MutableRefObject<null>, isUnobserve: boolean) => {
+export const useIntersectionObserver = (
+    ref: React.MutableRefObject<null>,
+    isUnobserve?: boolean,
+    observerOptions?: IntersectionObserverInit
+) => {
     const [isVisisible, setIsVisible] = useState(false);
 
     const observerCallback: IntersectionObserverCallback = ([entry]) => {
@@ -14,7 +18,7 @@ export const useIntersectionObserver = (ref: React.MutableRefObject<null>, isUno
             threshold: 0
         };
 
-        const observer = new IntersectionObserver(observerCallback, options);
+        const observer = new IntersectionObserver(observerCallback, observerOptions ? observerOptions : options);
         const element = ref.current;
 
         if (isUnobserve) {
